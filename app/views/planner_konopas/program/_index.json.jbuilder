@@ -1,7 +1,6 @@
 
 json.array! @programmeItems.each do |item|
     json.id             item.id.to_s    
-    json.lock_version   item.lock_version    
     json.title          item.title.html_safe
     json.short_title    item.short_title.html_safe
     json.desc           item.precis.html_safe
