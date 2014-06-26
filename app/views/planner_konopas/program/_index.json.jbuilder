@@ -1,6 +1,6 @@
 
 json.array! @programmeItems.each do |item|
-    json.id             item.id    
+    json.id             item.id.to_s    
     json.lock_version   item.lock_version    
     json.title          item.title.html_safe
     json.short_title    item.short_title.html_safe
@@ -18,7 +18,6 @@ json.array! @programmeItems.each do |item|
     json.tags           item.tag_list_on('PrimaryArea') # TODO - do we jut want the PrimaryArea or make this configrable
     json.people         item.published_programme_item_assignments.each do |assignment| 
         json.id         assignment.person_id
-        # TODO - change for first and last name
         json.name       (assignment.person_name ? assignment.person_name : assignment.person.getFullPublicationName)
         json.role       assignment.role.name if assignment.role
     end
