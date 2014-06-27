@@ -2,7 +2,6 @@
 json.array! @programmeItems.each do |item|
     json.id             item.id.to_s    
     json.title          item.title.html_safe
-    json.short_title    item.short_title.html_safe
     json.desc           item.precis.html_safe
     json.format         item.format ? item.format.name : ''
     json.datetime       item.published_time_slot.start
