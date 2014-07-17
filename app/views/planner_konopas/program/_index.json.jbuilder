@@ -13,7 +13,7 @@ json.array! @programmeItems.each do |item|
                             item.published_room_item_assignment.published_room.name, 
                             item.published_room_item_assignment.published_room.published_venue.name
                         ]
-    json.tags           item.tag_list_on('PrimaryArea') # TODO - do we jut want the PrimaryArea or make this configrable
+    json.tags           item.base_tags.collect{|t| t.name}
     json.people         item.published_programme_item_assignments.each do |assignment| 
         json.id         assignment.person_id
         json.name       (assignment.person_name ? assignment.person_name : assignment.person.getFullPublicationName)

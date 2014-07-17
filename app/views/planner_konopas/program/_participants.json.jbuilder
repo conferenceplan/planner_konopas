@@ -11,8 +11,8 @@ json.array! @participants.each do |person|
                 json.photo      listImage.bio_picture.standard.url
             end
             json.url        person.edited_bio.website if person.edited_bio.website && person.edited_bio.website.length > 0
-            json.twitter    person.edited_bio.twitterinfo if person.edited_bio.twitterinfo && person.edited_bio.twitterinfo.length > 0
-            json.fb         person.edited_bio.facebook if person.edited_bio.facebook && person.edited_bio.facebook.length > 0
+            json.twitter    person.edited_bio.twitterid if person.edited_bio.twitterinfo && person.edited_bio.twitterinfo.length > 0
+            json.fb         person.edited_bio.facebookid if person.edited_bio.facebook && person.edited_bio.facebook.length > 0
         end
     end
     json.prog       person.published_programme_items.collect{|i| i.id}
