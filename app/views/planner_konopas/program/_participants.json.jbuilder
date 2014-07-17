@@ -15,5 +15,5 @@ json.array! @participants.each do |person|
             json.fb         person.edited_bio.facebookid if person.edited_bio.facebook && person.edited_bio.facebook.length > 0
         end
     end
-    json.prog       person.published_programme_items.collect{|i| i.id}
+    json.prog       person.published_programme_items.collect{|i| i.id.to_s }
 end
