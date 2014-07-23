@@ -1,0 +1,70 @@
+<script type="text/javascript">
+
+KonopasConfigApp = new Backbone.Marionette.Application();
+
+KonopasConfigApp.ConfigManagement = (function(Backbone){
+
+    KonopasConfig = Backbone.Model.extend({
+        schema : {
+            base_url            : { type : 'Text', title : '<%= t "konopas-base-domain" %>' },
+            manifest_url        : { type : 'Text', title : '<%= t "konopas-manifest-url" %>' },
+            manifest_user       : { type : 'Text', title : '<%= t "konopas-manifest-user" %>' },
+            manifest_password   : { type : 'Text', title : '<%= t "konopas-manifest-password" %>' },
+            calendar_url        : { type : 'Text', title : '<%= t "konopas-calendar-url" %>' }
+        },
+        
+        data : {
+        },
+        
+        urlRoot : '/konopas/konopas_configs'
+    });
+
+    ConfigLayout = Backbone.Marionette.Layout.extend({
+        template: "#config-list-layout-template",
+        
+        regions : {
+            titleRegion     : "#config-title-div",
+            controlRegion   : "#config-control-div",
+            configRegion    : "#config-region-div",
+        },
+    });
+
+    var configRegion = new Backbone.Marionette.Region({
+        el: "#config-area"
+    });
+
+    /*
+     * 
+     */
+    return {
+        init : function(options) {
+            Backbone.history.start();
+
+            configRegion.close();
+            configLayout = new ConfigLayout();
+            configRegion.show(configLayout);
+            
+            var config = new KonopasConfig();
+            config.fetch({
+                success : function(mdl) {
+                    var view = AppUtils.createEditItemView({
+                        model           : mdl,
+                        itemArea        : "#config-control-div",
+                        readTemplate    : '#konopas-config-view-template',
+                    });
+                }
+            });
+        }
+    }
+    
+})(Backbone);
+
+/*
+ * 
+ */
+jQuery(document).ready(function() {
+    KonopasConfigApp.addInitializer(KonopasConfigApp.ConfigManagement.init);
+    KonopasConfigApp.start({});
+});
+
+</script>

@@ -4,9 +4,9 @@ class CreatePlannerKonopasKonopasConfigs < ActiveRecord::Migration
       # root for cache priming
       t.string :base_url
       # manifest refresh
-      t.string :manfest_url
-      t.string :manfest_user
-      t.string :manfest_password
+      t.string :manifest_url
+      t.string :manifest_user
+      t.string :manifest_password
       # calendar refresh
       t.string :calendar_url
       t.string :calendar_user

@@ -8,6 +8,6 @@ PlannerKonopas::Engine.routes.draw do
   match 'program/participants', :controller => 'program', :action => 'participants',  :method => 'get'
   match 'program',              :controller => 'program', :action => 'index',         :method => 'get'
   
-  resources 'konopas_config'
+  resources 'konopas_configs'
 
 end

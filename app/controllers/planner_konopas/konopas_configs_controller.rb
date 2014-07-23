@@ -1,7 +1,6 @@
-require_dependency "planner_konopas/application_controller"
 
 module PlannerKonopas
-  class KonopasConfigController < PlannerController
+  class KonopasConfigsController < PlannerController
 
     def index
       config = PlannerKonopas::KonopasConfig.first
@@ -17,7 +16,7 @@ module PlannerKonopas
   
     def create
       begin
-        config = Format.new(params[:konopas_config])
+        config = PlannerKonopas::KonopasConfig.new(params[:konopas_config])
         config.save!
         render json: config.to_json, :content_type => 'application/json'
       rescue => ex

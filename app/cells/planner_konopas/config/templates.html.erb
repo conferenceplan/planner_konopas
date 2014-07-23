@@ -1,0 +1,31 @@
+<script type="text/template" id="config-title-template">
+    <span class="label label-default">{{= title }}</span>
+</script>
+
+<script type="text/template" id="config-list-layout-template">
+    <div class="row">
+        <div class="col-xs-1">
+            <div id="config-title-div"></div>
+        </div>
+        <div class="col-xs-11">
+            <div id="config-control-div"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="config-region-div" class="col-xs-12"></div>
+    </div>
+</script>
+
+<script type="text/template" id="konopas-config-view-template">
+    <dl class="dl-horizontal">
+        {{ if (typeof id != 'undefined') { }}
+        <dt><%= t "konopas-base-domain" %></dt><dd>{{= base_url }}</dd>
+        <dt><%= t "konopas-manifest-url" %></dt><dd>{{= manifest_url }}</dd>
+        <dt><%= t "konopas-manifest-user" %></dt><dd>{{= manifest_user }}</dd>
+        <dt><%= t "konopas-manifest-password" %></dt><dd>{{= manifest_password }}</dd>
+        <dt><%= t "konopas-calendar-url" %></dt><dd>{{= calendar_url }}</dd>
+        {{ } else{ }}
+        NO CONFIG
+        {{ } }}
+    </dl>
+</script>
