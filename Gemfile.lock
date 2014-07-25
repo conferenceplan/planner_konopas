@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    planner_konopas (0.0.1)
+    planner_konopas (0.1.1)
       rails (~> 3.2.17)
 
 GEM
@@ -49,7 +49,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.10.0)
-    polyglot (0.3.4)
+    polyglot (0.3.5)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)

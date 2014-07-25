@@ -8,7 +8,7 @@ json.array! @programmeItems.each do |item|
     json.date           item.published_time_slot.start.strftime('%Y-%m-%d')
     json.day            item.published_time_slot.start.strftime("%A")
     json.time           item.published_time_slot.start.strftime('%H:%M')
-    json.mins           item.duration
+    json.mins           item.duration.to_s
     json.loc            [
                             item.published_room_item_assignment.published_room.name, 
                             item.published_room_item_assignment.published_room.published_venue.name
