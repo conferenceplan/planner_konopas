@@ -15,7 +15,7 @@ json.array! @programmeItems.each do |item|
                         ]
     json.tags           item.base_tags.collect{|t| t.name}
     json.people         item.published_programme_item_assignments.each do |assignment| 
-        json.id         assignment.person_id
+        json.id         assignment.person_id.to_s
         json.name       (assignment.person_name ? assignment.person_name : assignment.person.getFullPublicationName)
         json.role       assignment.role.name if assignment.role
     end
