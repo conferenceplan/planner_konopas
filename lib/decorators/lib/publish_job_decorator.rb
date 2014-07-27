@@ -2,9 +2,9 @@ require "net/http"
 
 PublishJob.class_eval do
 
-  def perform_with_konopas
+  def post_process_with_konopas
     # do the original job
-    perform_without_konopas
+    post_process_without_konopas
 
     begin
       # get the Konopas config
@@ -29,7 +29,7 @@ PublishJob.class_eval do
     end
   end
 
-  alias_method_chain :perform, :konopas
+  alias_method_chain :post_process, :konopas
 
   protected
 
