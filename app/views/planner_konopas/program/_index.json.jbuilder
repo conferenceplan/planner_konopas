@@ -10,8 +10,8 @@ json.array! @programmeItems.each do |item|
     json.time           item.published_time_slot.start.strftime('%H:%M')
     json.mins           item.duration.to_s
     json.loc            [
-                            item.published_room_item_assignment.published_room.name, 
-                            item.published_room_item_assignment.published_room.published_venue.name
+                            item.published_room_item_assignment.published_room.name #, 
+#                            item.published_room_item_assignment.published_room.published_venue.name
                         ]
     json.tags           item.base_tags.collect{|t| t.name}
     json.people         item.published_programme_item_assignments.each do |assignment| 
