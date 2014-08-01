@@ -18,7 +18,7 @@ PublishJob.class_eval do
         end
         
         # and now reset the Konopas manifest
-        make_request(config.manfest_url,  config.manfest_user,  config.manfest_password) if !config.manfest_url.blank?
+        make_request(config.manifest_url,  config.manifest_user,  config.manifest_password) if !config.manifest_url.blank?
         make_request(config.calendar_url, config.calendar_user, config.calendar_password) if !config.calendar_url.blank?
         # uri = URI.parse('https://konopas-server.appspot.com/loncon3/update_prog') <div style="padding:10px; padding-top: 0px; padding-bottom: 0px;">
         # uri = URI.parse('http://guide.loncon3.org/util/update-cache-manifest.php')
@@ -31,7 +31,7 @@ PublishJob.class_eval do
 
   alias_method_chain :post_process, :konopas
 
-  protected
+#  protected
 
   def make_request(uri_str, username = nil, password = nil)
     uri = URI.parse(uri_str)
