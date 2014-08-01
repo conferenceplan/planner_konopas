@@ -9,10 +9,11 @@ json.array! @programmeItems.each do |item|
     json.day            item.published_time_slot.start.strftime("%A")
     json.time           item.published_time_slot.start.strftime('%H:%M')
     json.mins           item.duration.to_s
-    json.loc            [
-                            item.published_room_item_assignment.published_room.name #, 
-#                            item.published_room_item_assignment.published_room.published_venue.name
-                        ]
+
+    loc = [item.published_room_item_assignment.published_room.name]
+    loc = loc << item.published_room_item_assignment.published_room.published_venue.name if !@singleVenue    
+    
+    json.loc            loc
     json.tags           item.base_tags.collect{|t| t.name}
     json.people         item.published_programme_item_assignments.each do |assignment| 
         json.id         assignment.person_id.to_s

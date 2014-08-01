@@ -15,6 +15,7 @@ module PlannerKonopas
       day = params[:day]
       name = params[:name]
       lastname = params[:lastname]
+      @singleVenue = Venue.count == 1
       
       PublishedProgrammeItem.uncached do
         conditions = getConditions(params)
