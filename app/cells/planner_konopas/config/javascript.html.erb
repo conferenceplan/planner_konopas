@@ -16,7 +16,7 @@ KonopasConfigApp.ConfigManagement = (function(Backbone){
         data : {
         },
         
-        urlRoot : '/konopas/konopas_configs'
+        urlRoot : "<%= baseUri + '/konopas/konopas_configs' %>"
     });
 
     ConfigLayout = Backbone.Marionette.Layout.extend({
