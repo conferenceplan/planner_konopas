@@ -3,15 +3,14 @@
 #
 Planner::ControllerAdditions.class_eval do
 
-    def top_menu_additions_with_konopas
-      return top_menu_additions_without_konopas.merge!({ 
-        "konopas"   => allowed?(:konopas) ?
-              { :target => '/konopas/pages/konopas_dash/config', 
-                :icon => "glyphicon glyphicon-globe",
-                :target_base => '/konopas/pages/konopas_dash'} : nil
-       }.keep_if{|k,v| v})
+    def top_menu_with_konopas
+      menu = top_menu_without_konopas
+
+      menu << { :title => 'konopas', :target => '/konopas/pages/konopas_dash/config', :icon => "glyphicon glyphicon-globe", :target_base => '/konopas/pages/konopas_dash'} if allowed?(:konopas)
+
+      menu
     end
 
-    alias_method_chain :top_menu_additions, :konopas
+    alias_method_chain :top_menu, :konopas
   
 end
