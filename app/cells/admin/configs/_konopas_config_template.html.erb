@@ -1,0 +1,14 @@
+
+<script type="text/template" id="konopas-config-template">
+    <dl class="dl-horizontal">
+        {{ if (typeof id != 'undefined') { }}
+        <dt><%= t "konopas-base-domain" %></dt><dd>{{= base_url }}</dd>
+        <dt><%= t "konopas-manifest-url" %></dt><dd>{{= manifest_url }}</dd>
+        <dt><%= t "konopas-manifest-user" %></dt><dd>{{= manifest_user }}</dd>
+        <dt><%= t "konopas-manifest-password" %></dt><dd>{{= manifest_password }}</dd>
+        <dt><%= t "konopas-calendar-url" %></dt><dd>{{= calendar_url }}</dd>
+        {{ } else{ }}
+        NO CONFIG
+        {{ } }}
+    </dl>
+</script>

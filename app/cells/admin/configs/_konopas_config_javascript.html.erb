@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+KonopasConfigApp = new Backbone.Marionette.Application();
+
+KonopasConfigApp.ConfigManagement = (function(Backbone){
+
+    KonopasConfig = Backbone.Model.extend({
+        schema : {
+            base_url            : { type : 'Text', title : '<%= t "konopas-base-domain" %>' },
+            manifest_url        : { type : 'Text', title : '<%= t "konopas-manifest-url" %>' },
+            manifest_user       : { type : 'Text', title : '<%= t "konopas-manifest-user" %>' },
+            manifest_password   : { type : 'Text', title : '<%= t "konopas-manifest-password" %>' },
+            calendar_url        : { type : 'Text', title : '<%= t "konopas-calendar-url" %>' }
+        },
+        
+        data : {
+        },
+        
+        urlRoot : "<%= baseUri + '/konopas/konopas_configs' %>"
+    });
+
+    var KWorkspace = Backbone.Router.extend({
+        routes : {
+            'konopas_config' : 'konopas_config',
+        },
+        
+        konopas_config : function() {
+            ConfigApp.ConfigManagement.configRegion.close();
+            configLayout = new ConfigApp.ConfigManagement.ConfigLayout();
+            ConfigApp.ConfigManagement.configRegion.show(configLayout);
+            
+            var config = new KonopasConfig();
+            config.fetch({
+                success : function(mdl) {
+                    var view = AppUtils.createEditItemView({
+                        model           : mdl,
+                        itemArea        : "#config-control-div",
+                        readTemplate    : '#konopas-config-template'
+                    });
+                }
+            });
+        },
+    });        
+
+    return {
+        init : function(options) {
+            new KWorkspace();
+        }
+    }
+})(Backbone);
+
+/*
+ * 
+ */
+jQuery(document).ready(function() {
+    KonopasConfigApp.addInitializer(KonopasConfigApp.ConfigManagement.init);
+    KonopasConfigApp.start({});
+});
+
+</script>
