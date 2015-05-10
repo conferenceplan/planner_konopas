@@ -1,8 +1,8 @@
 
 json.array! @programmeItems.each do |item|
     json.id             item.id.to_s    
-    json.title          item.title.html_safe
-    json.desc           item.precis.html_safe
+    json.title          item.title ? item.title.html_safe : ''
+    json.desc           item.precis ? item.precis.html_safe : ''
     json.format         item.format ? item.format.name : ''
     json.datetime       item.published_time_slot.start
     json.date           item.published_time_slot.start.strftime('%Y-%m-%d')
