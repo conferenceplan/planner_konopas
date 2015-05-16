@@ -2,7 +2,7 @@
 json.array! @participants.each do |person|
     if person
         json.id     person.id.to_s
-        json.name   [person.pubFirstName, person.pubLastName, "", person.pubSuffix ? person.pubSuffix : ""]
+        json.name   [person.pubFirstName, person.pubLastName, (person.pubPrefix ? person.pubPrefix : ""), (person.pubSuffix ? person.pubSuffix : "")]
         json.bio    person.bio ? person.bio : ''
         if person.edited_bio
             json.links do
