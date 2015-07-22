@@ -13,8 +13,6 @@ module PlannerKonopas
       stream = params[:stream]
       layout = params[:layout]
       day = params[:day]
-      name = params[:name]
-      lastname = params[:lastname]
       @singleVenue = Venue.count == 1
       
       PublishedProgrammeItem.uncached do
@@ -23,7 +21,7 @@ module PlannerKonopas
         if stream
           @programmeItems = PublishedProgramItemsService.getTaggedPublishedProgramItems stream, day, name, lastname
         else
-          @programmeItems = PublishedProgramItemsService.getPublishedProgramItems day, name, lastname
+          @programmeItems = PublishedProgramItemsService.getPublishedProgramItems day
         end
       end
       
