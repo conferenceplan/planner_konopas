@@ -10,19 +10,13 @@ module PlannerKonopas
     # Get the program items in the JS form that Konapas wants
     #
     def index
-      stream = params[:stream]
-      layout = params[:layout]
       day = params[:day]
       @singleVenue = Venue.count == 1
       
       PublishedProgrammeItem.uncached do
         conditions = getConditions(params)
         
-        if stream
-          @programmeItems = PublishedProgramItemsService.getTaggedPublishedProgramItems stream, day, name, lastname
-        else
-          @programmeItems = PublishedProgramItemsService.getPublishedProgramItems day
-        end
+        @programmeItems = PublishedProgramItemsService.getPublishedProgramItems day
       end
       
       @result = render_to_string( template: 'planner_konopas/program/_index.json.jbuilder', locals: { programmeItems: @programmeItems})
