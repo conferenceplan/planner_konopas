@@ -1,8 +1,11 @@
+
 module PlannerKonopas
   class Engine < ::Rails::Engine
     isolate_namespace PlannerKonopas
     
     config.to_prepare do
+      hack = PlannerKonopas::KonopasConfig
+
       Dir.glob(PlannerKonopas::Engine.config.paths["lib"].expanded[0] + "/decorators/**/*_decorator*.rb").each do |c|
         require_dependency(c)
       end
