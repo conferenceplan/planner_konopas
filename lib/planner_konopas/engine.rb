@@ -16,8 +16,15 @@ module PlannerKonopas
     initializer :append_migrations do |app|
       # unless the engine is the multi-tenant planner_front
       unless (app.root.to_s.match root.to_s) || (app.engine_name == "planner_front_application")
-        app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
+        # app.config.paths["db/migrate"] += config.paths["db/migrate"].expanded
+        config.paths["db/migrate"].expanded.each do |expanded_path|
+          app.config.paths["db/migrate"] << expanded_path
+        end
       end
+    end
+
+    initializer :after_initialize do
+      Cell::ViewModel.view_paths << File.expand_path("#{PlannerKonopas::Engine.root}/app/cells", __FILE__)
     end
 
   end

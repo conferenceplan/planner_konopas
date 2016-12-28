@@ -1,4 +1,4 @@
-class PlannerKonopas::ConfigCell < Cell::Rails
+class PlannerKonopas::ConfigCell < Cell::PlannerCell
 
   def display
     render
