@@ -1,5 +1,5 @@
 <% if @cellname %>
-    <%= render_cell "planner_konopas/#{@cellname}", :display %>
+    <%= cell("planner_konopas/#{@cellname}").( :display) %>
 <% else %>
-    <%= render_cell "planner_konopas/config", :display %>
+    <%= cell("planner_konopas/config").( :display) %>
 <% end %>
