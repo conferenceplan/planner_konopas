@@ -15,13 +15,11 @@ Gem::Specification.new do |s|
   s.description = "REST API to support Konopas."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["LICENSE", "Rakefile"]
-  # s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.18"
-  # s.add_dependency "jquery-rails"
-  s.add_dependency "globalize", "~> 3.1.0"
+  s.add_dependency 'rails', '~> 4.2.0'
+  s.add_dependency "globalize"
   s.add_dependency 'devise'
   s.add_dependency 'planner-core'
-  
+
   s.add_development_dependency "sqlite3"
 end
