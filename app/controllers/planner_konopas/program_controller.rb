@@ -6,6 +6,9 @@ module PlannerKonopas
     caches_action :participants,
                 :cache_path => Proc.new { |c| c.params.delete_if { |k,v| k.starts_with?('sort')  || k.starts_with?('_dc') || k.starts_with?('undefined')} }
     
+    
+    protect_from_forgery except: [:index, :participants]
+    
     #
     # Get the program items in the JS form that Konapas wants
     #
