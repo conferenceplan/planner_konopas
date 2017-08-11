@@ -9,7 +9,8 @@ json.array! @participants.each do |person|
                 if person.bio_image && @partition_val
                     listImage = person.bio_image
                     listImage.scale = 1
-                    json.photo      listImage.bio_picture.standard.url
+
+                    json.photo (ENV[:base_image_url.to_s + listImage.bio_picture.standard.url.partition(/upload/)[2])
                 end
                 json.url        person.edited_bio.website if person.edited_bio.website && person.edited_bio.website.length > 0
                 json.twitter    person.edited_bio.twitterid if person.edited_bio.twitterinfo && person.edited_bio.twitterinfo.length > 0
