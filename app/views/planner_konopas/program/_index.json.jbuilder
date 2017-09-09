@@ -6,10 +6,10 @@ json.array! @programmeItems.each do |item|
         json.themes         item.theme_names.collect{|c| c.name}
         json.desc           item.precis ? item.precis.html_safe : ''
         json.format         item.format ? item.format.name : ''
-        json.datetime       item.published_time_slot.start
-        json.date           item.published_time_slot.start.strftime('%Y-%m-%d')
-        json.day            item.published_time_slot.start.strftime("%A")
-        json.time           item.published_time_slot.start.strftime('%H:%M')
+        json.datetime       item.start_time
+        json.date           item.start_time.strftime('%Y-%m-%d')
+        json.day            item.start_time.strftime("%A")
+        json.time           item.start_time.strftime('%H:%M')
         json.mins           item.duration.to_s
     
         if item.is_break

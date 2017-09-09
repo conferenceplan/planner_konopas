@@ -1,11 +1,10 @@
 
 module PlannerKonopas
   class ProgramController < ApplicationController
-    caches_action :index,
-                :cache_path => Proc.new { |c| c.params.delete_if { |k,v| k.starts_with?('sort')  || k.starts_with?('_dc') || k.starts_with?('undefined')} }
-    caches_action :participants,
-                :cache_path => Proc.new { |c| c.params.delete_if { |k,v| k.starts_with?('sort')  || k.starts_with?('_dc') || k.starts_with?('undefined')} }
-    
+    # caches_action :index,
+    #             :cache_path => Proc.new { |c| c.params.delete_if { |k,v| k.starts_with?('sort')  || k.starts_with?('_dc') || k.starts_with?('undefined')} }
+    # caches_action :participants,
+    #             :cache_path => Proc.new { |c| c.params.delete_if { |k,v| k.starts_with?('sort')  || k.starts_with?('_dc') || k.starts_with?('undefined')} }
     
     protect_from_forgery except: [:index, :participants]
     
@@ -23,7 +22,7 @@ module PlannerKonopas
       end
       
       @result = render_to_string( template: 'planner_konopas/program/_index.json.jbuilder', locals: { programmeItems: @programmeItems})
-      render js: "var program = " + @result #, :content_type => 'application/json'
+      render js: "var program = []" #+ @result #, :content_type => 'application/json'
     end
     
     #
@@ -40,7 +39,7 @@ module PlannerKonopas
       end
       
       @result = render_to_string( template: 'planner_konopas/program/_participants.json.jbuilder', locals: { participants: @participants})
-      render js: "var people = " + @result #, :content_type => 'application/json'
+      render js: "var people = []" #+ @result #, :content_type => 'application/json'
     end  
 
     #
