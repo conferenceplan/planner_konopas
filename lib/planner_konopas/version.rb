@@ -1,3 +1,3 @@
 module PlannerKonopas
-  VERSION = "1.1.55"
+  VERSION = "1.1.56"
 end
