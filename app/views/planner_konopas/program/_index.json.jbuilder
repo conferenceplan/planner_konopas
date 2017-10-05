@@ -4,7 +4,7 @@ json.array! @programmeItems.each do |item|
         json.id             item.id.to_s    
         json.title          item.title ? item.title.html_safe : ''
         json.themes         item.theme_names.collect{|c| c.name}
-        json.desc           item.precis ? item.precis.html_safe : ''
+        json.desc           item.description ? item.description.html_safe : ''
         json.format         item.format ? item.format.name : ''
         json.datetime       item.start_time
         json.date           item.start_time.strftime('%Y-%m-%d')
